@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel="stylesheet" type="text/css" href="memoStyle.css">
+  </head>
+  <body>
+    <div class="home-btn" onclick="location.href='index.html'"></div>
+    <div class="container">
+      <div class="text">Emotion trashcan</div>
+      <div class="icon trash-icon" onclick="showTextArea()"></div>
+      <textarea
+        id="emotionTextArea"
+        placeholder="지금 기분이 어떤지 적어보세요..."
+        style="display: none"
+      ></textarea>
+      <button
+        id="submitBtn"
+        class="submit-btn"
+        onclick="saveEmotionAndRedirect()"
+        style="display: none"
+      >
+        버리기
+      </button>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function saveEmotionAndRedirect() {
+        const emotionText = document.getElementById("emotionTextArea").value;
+        localStorage.setItem("emotionText", emotionText);
+        window.location.href = "fire.html";
+      }
+
+      function showTextArea() {
+        var trashIcon = document.querySelector(".trash-icon");
+        trashIcon.style.display = "none";
+
+        var textarea = document.getElementById("emotionTextArea");
+        textarea.style.display = "block";
+
+        var submitBtn = document.getElementById("submitBtn");
+        submitBtn.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
